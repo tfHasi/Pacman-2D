@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://y7vj0tf6ihex"]
+
+[ext_resource type="Texture2D" uid="uid://t1ed8omlhbeb" path="res://assets/PacMan.png" id="1_4pcbg"]
+[ext_resource type="Script" path="res://scripts/pacman.gd" id="1_kkv2h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6aw0"]
+atlas = ExtResource("1_4pcbg")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8ji6"]
+atlas = ExtResource("1_4pcbg")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqclx"]
+atlas = ExtResource("1_4pcbg")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlyif"]
+atlas = ExtResource("1_4pcbg")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddet8"]
+atlas = ExtResource("1_4pcbg")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pjvf"]
+atlas = ExtResource("1_4pcbg")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ac6ys"]
+atlas = ExtResource("1_4pcbg")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcu3s"]
+atlas = ExtResource("1_4pcbg")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rvxyv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6aw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8ji6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqclx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlyif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddet8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pjvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ac6ys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcu3s")
+}],
+"loop": true,
+"name": &"move",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g6vra"]
+radius = 2.0
+
+[node name="Pacman" type="CharacterBody2D"]
+script = ExtResource("1_kkv2h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.98023e-08, -2.98023e-08)
+scale = Vector2(0.3125, 0.3125)
+sprite_frames = SubResource("SpriteFrames_rvxyv")
+animation = &"move"
+autoplay = "move"
+frame_progress = 0.842541
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+shape = SubResource("CircleShape2D_g6vra")
