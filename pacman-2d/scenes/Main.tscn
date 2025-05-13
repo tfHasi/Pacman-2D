@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://dqyhk52fextjm"]
+[gd_scene load_steps=11 format=4 uid="uid://dqyhk52fextjm"]
 
 [ext_resource type="Texture2D" uid="uid://bqdfwivl3le5v" path="res://assets/Tileset.png" id="1_y46lu"]
 [ext_resource type="PackedScene" uid="uid://y7vj0tf6ihex" path="res://scenes/pacman.tscn" id="2_dwqsh"]
+[ext_resource type="PackedScene" uid="uid://12hshn7kqbr6" path="res://scenes/ghosts/greenGhost.tscn" id="3_5ayyi"]
+[ext_resource type="PackedScene" uid="uid://j12rl263sv6j" path="res://scenes/ghosts/orangeGhost.tscn" id="4_ufc5k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7m0uq"]
 texture = ExtResource("1_y46lu")
@@ -1851,4 +1853,10 @@ z_index = 2
 position = Vector2(63, 84)
 
 [node name="Camera2D" type="Camera2D" parent="Pacman"]
-zoom = Vector2(5, 5)
+zoom = Vector2(8, 8)
+
+[node name="BlueGhost" parent="." instance=ExtResource("3_5ayyi")]
+position = Vector2(53, 96)
+
+[node name="BlueGhost2" parent="." instance=ExtResource("4_ufc5k")]
+position = Vector2(74, 96)
