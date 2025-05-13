@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://j12rl263sv6j"]
+
+[ext_resource type="Texture2D" uid="uid://tgktr3bxgxoc" path="res://assets/redGhost.png" id="1_6v7dh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26tgl"]
+atlas = ExtResource("1_6v7dh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjppe"]
+atlas = ExtResource("1_6v7dh")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk017"]
+atlas = ExtResource("1_6v7dh")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eiqnc"]
+atlas = ExtResource("1_6v7dh")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgub0"]
+atlas = ExtResource("1_6v7dh")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3rcb"]
+atlas = ExtResource("1_6v7dh")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjecm"]
+atlas = ExtResource("1_6v7dh")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glsct"]
+atlas = ExtResource("1_6v7dh")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fqkd5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26tgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjppe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qk017")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eiqnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgub0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3rcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjecm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glsct")
+}],
+"loop": true,
+"name": &"move",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ls1gk"]
+radius = 6.0
+
+[node name="BlueGhost" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fqkd5")
+animation = &"move"
+frame_progress = 0.875599
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ls1gk")
