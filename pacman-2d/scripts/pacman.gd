@@ -1,20 +1,25 @@
 extends CharacterBody2D
 
 const GRID := 8
-const SPEED := 20.0
-
+const SPEED := 15.0
 var direction = Vector2.ZERO
 var next_direction = Vector2.ZERO
 var target_pos = Vector2.ZERO
 var last_valid_pos = Vector2.ZERO
+var score = 0
+
+signal coin_eaten(points)
 
 func _ready():
 	position = position.snapped(Vector2(GRID, GRID))
 	last_valid_pos = position
 	target_pos = position
 	$AnimatedSprite2D.play("move")
+	
+	# Add Pacman to the "pacman" group for easy identification
+	add_to_group("pacman")
 
-func _process(_delta):
+func _process(delta):
 	for dir in [Vector2.RIGHT, Vector2.LEFT, Vector2.DOWN, Vector2.UP]:
 		if Input.is_action_just_pressed(direction_to_action(dir)):
 			next_direction = dir
@@ -57,6 +62,16 @@ func _physics_process(delta):
 	else:
 		velocity = Vector2.ZERO
 
+# Check for coin collisions
+func _on_coin_detector_area_entered(area):
+	if area.is_in_group("coins"):
+		# Tell the coin it was eaten
+		area.eat()
+		
+		# Update score and emit signal
+		score += 10
+		emit_signal("coin_eaten", 10)
+
 func can_move_to(pos: Vector2) -> bool:
 	var query = PhysicsPointQueryParameters2D.new()
 	query.position = pos
@@ -86,3 +101,7 @@ func update_animation():
 		Vector2.UP:
 			$AnimatedSprite2D.rotation = -PI/2
 			$AnimatedSprite2D.flip_h = false
+
+# Getter for score
+func get_score() -> int:
+	return score
