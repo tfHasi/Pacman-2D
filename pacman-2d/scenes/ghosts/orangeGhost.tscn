@@ -75,7 +75,8 @@ scale = Vector2(0.5, 0.5)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fqkd5")
 animation = &"move"
-frame_progress = 0.875599
+autoplay = "move"
+frame_progress = 0.356376
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ls1gk")
