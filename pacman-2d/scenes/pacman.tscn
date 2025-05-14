@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://y7vj0tf6ihex"]
+[gd_scene load_steps=14 format=3 uid="uid://y7vj0tf6ihex"]
 
 [ext_resource type="Texture2D" uid="uid://t1ed8omlhbeb" path="res://assets/PacMan.png" id="1_4pcbg"]
 [ext_resource type="Script" path="res://scripts/pacman.gd" id="1_kkv2h"]
@@ -70,8 +70,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_g6vra"]
 radius = 3.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3uloo"]
+radius = 2.82843
+
 [node name="Pacman" type="CharacterBody2D"]
-scale = Vector2(0.675, 0.675)
+scale = Vector2(0.5, 0.5)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_kkv2h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -85,3 +90,10 @@ frame_progress = 0.842541
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
 shape = SubResource("CircleShape2D_g6vra")
+
+[node name="CoinDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoinDetector"]
+shape = SubResource("CircleShape2D_3uloo")
+
+[connection signal="area_entered" from="CoinDetector" to="." method="_on_coin_detector_area_entered"]
